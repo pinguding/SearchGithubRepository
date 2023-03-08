@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 open class BaseCollectionViewController: UIViewController {
         
@@ -19,11 +20,15 @@ open class BaseCollectionViewController: UIViewController {
         nil
     }
     
-    open var numberOfSections: Int {
-        1
+    open var usingPagination: Bool {
+        false
     }
     
     public private(set) weak var viewModel: BaseCollectionViewModel?
+    
+    private var dataSource: UICollectionViewDiffableDataSource<Int, BaseCollectionData>?
+    
+    private var cancellable: Set<AnyCancellable> = []
     
     static public func build<ViewModel: BaseCollectionViewModel>(viewModel: ViewModel) -> BaseCollectionViewController {
         let identifier = String(describing: Self.self)
@@ -46,11 +51,21 @@ open class BaseCollectionViewController: UIViewController {
             let headerType = type(of: header)
             collectionView.register(headerType.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerType.identifier)
         }
+        
+        sinkWithViewModel()
     }
     
-    
-    
     open func sinkWithViewModel() {
-        
+        viewModel?.updateDataSourcePublisher
+            .sink(receiveValue: { [weak self] _ in
+                DispatchQueue.main.async {
+                    guard let self = self, let viewModel = self.viewModel else { return }
+                    var snapShot = NSDiffableDataSourceSnapshot<Int, BaseCollectionData>()
+                    snapShot.appendSections([0])
+                    snapShot.appendItems(viewModel.collectionViewDataSource)
+                    self.dataSource?.apply(snapShot)
+                }
+            })
+            .store(in: &cancellable)
     }
 }
