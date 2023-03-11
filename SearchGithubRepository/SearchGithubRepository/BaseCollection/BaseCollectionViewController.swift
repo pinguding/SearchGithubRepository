@@ -116,12 +116,12 @@ open class BaseCollectionViewController: UIViewController {
     
     open func sinkWithViewModel() {
         viewModel?.updateDataSourcePublisher
-            .sink(receiveValue: { [weak self] _ in
+            .sink(receiveValue: { [weak self] data in
                 DispatchQueue.main.async {
-                    guard let self = self, let viewModel = self.viewModel else { return }
+                    guard let self = self else { return }
                     var snapShot = NSDiffableDataSourceSnapshot<Int, BaseCollectionData>()
                     snapShot.appendSections([0])
-                    snapShot.appendItems(viewModel.collectionViewDataSource)
+                    snapShot.appendItems(data)
                     self.dataSource?.apply(snapShot)
                 }
             })
