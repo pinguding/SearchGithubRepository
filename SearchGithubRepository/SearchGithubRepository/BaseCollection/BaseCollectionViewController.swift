@@ -24,7 +24,7 @@ open class BaseCollectionViewController: UIViewController {
         [:]
     }
     
-    open var useActivityIndicatorFooter: Bool {
+    open var showActivityIndicatorFooter: Bool {
         false
     }
     
@@ -54,7 +54,7 @@ open class BaseCollectionViewController: UIViewController {
             collectionView.register($0.value.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: $0.value.identifier)
         }
         
-        if useActivityIndicatorFooter {
+        if showActivityIndicatorFooter {
             collectionView.register(ActivityIndicatorFooterView.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: ActivityIndicatorFooterView.identifier)
         }
         
@@ -63,7 +63,7 @@ open class BaseCollectionViewController: UIViewController {
             
             var boundarySupplementaryItems = sectionLayout.boundarySupplementaryItems
             
-            if self.useActivityIndicatorFooter, sectionIndex == self.numberOfSection - 1 {
+            if self.showActivityIndicatorFooter, sectionIndex == self.numberOfSection - 1 {
                 let footerLayout = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50)), elementKind: UICollectionView.elementKindSectionFooter, alignment: .bottom)
                 boundarySupplementaryItems.append(footerLayout)
             }
