@@ -24,6 +24,10 @@
 		0ABFFB3E29B8D85A004C9E01 /* BaseCollectionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABFFB3D29B8D85A004C9E01 /* BaseCollectionData.swift */; };
 		0ABFFB4029B8DA11004C9E01 /* BaseCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABFFB3F29B8DA11004C9E01 /* BaseCollectionViewModel.swift */; };
 		0ABFFB4229B8DCBA004C9E01 /* BaseCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABFFB4129B8DCBA004C9E01 /* BaseCollectionReusableView.swift */; };
+		0ACB258429BC8046008F5283 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB258329BC8046008F5283 /* HomeViewModel.swift */; };
+		0ACB258729BC808A008F5283 /* HomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ACB258629BC808A008F5283 /* HomeViewController.storyboard */; };
+		0ACB258929BC80CB008F5283 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB258829BC80CB008F5283 /* HomeCell.swift */; };
+		0ACB258B29BC80D5008F5283 /* HomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0ACB258A29BC80D5008F5283 /* HomeCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +69,10 @@
 		0ABFFB3D29B8D85A004C9E01 /* BaseCollectionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionData.swift; sourceTree = "<group>"; };
 		0ABFFB3F29B8DA11004C9E01 /* BaseCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewModel.swift; sourceTree = "<group>"; };
 		0ABFFB4129B8DCBA004C9E01 /* BaseCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionReusableView.swift; sourceTree = "<group>"; };
+		0ACB258329BC8046008F5283 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		0ACB258629BC808A008F5283 /* HomeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeViewController.storyboard; sourceTree = "<group>"; };
+		0ACB258829BC80CB008F5283 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
+		0ACB258A29BC80D5008F5283 /* HomeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,7 +125,7 @@
 			children = (
 				0ABFFB0629B8C21F004C9E01 /* AppDelegate.swift */,
 				0ABFFB0829B8C21F004C9E01 /* SceneDelegate.swift */,
-				0ABFFB0A29B8C21F004C9E01 /* HomeViewController.swift */,
+				0ACB258529BC804B008F5283 /* Home */,
 				0ABFFB3629B8CCA9004C9E01 /* BaseCollection */,
 				0ABFFB0C29B8C21F004C9E01 /* Main.storyboard */,
 				0ABFFB0F29B8C221004C9E01 /* Assets.xcassets */,
@@ -157,6 +165,18 @@
 				0A19139629BC661300F522E8 /* ActivityIndicatorFooterView.xib */,
 			);
 			path = BaseCollection;
+			sourceTree = "<group>";
+		};
+		0ACB258529BC804B008F5283 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				0ABFFB0A29B8C21F004C9E01 /* HomeViewController.swift */,
+				0ACB258629BC808A008F5283 /* HomeViewController.storyboard */,
+				0ACB258329BC8046008F5283 /* HomeViewModel.swift */,
+				0ACB258829BC80CB008F5283 /* HomeCell.swift */,
+				0ACB258A29BC80D5008F5283 /* HomeCell.xib */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,8 +283,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0ACB258B29BC80D5008F5283 /* HomeCell.xib in Resources */,
 				0A19139729BC661300F522E8 /* ActivityIndicatorFooterView.xib in Resources */,
 				0ABFFB1329B8C221004C9E01 /* LaunchScreen.storyboard in Resources */,
+				0ACB258729BC808A008F5283 /* HomeViewController.storyboard in Resources */,
 				0ABFFB3A29B8D1AA004C9E01 /* BaseCollectionViewController.storyboard in Resources */,
 				0ABFFB1029B8C221004C9E01 /* Assets.xcassets in Resources */,
 				0ABFFB0E29B8C21F004C9E01 /* Main.storyboard in Resources */,
@@ -295,6 +317,8 @@
 				0ABFFB4229B8DCBA004C9E01 /* BaseCollectionReusableView.swift in Sources */,
 				0ABFFB3C29B8D45A004C9E01 /* BaseCollectionViewCell.swift in Sources */,
 				0A19139529BC660B00F522E8 /* ActivityIndicatorFooterView.swift in Sources */,
+				0ACB258929BC80CB008F5283 /* HomeCell.swift in Sources */,
+				0ACB258429BC8046008F5283 /* HomeViewModel.swift in Sources */,
 				0ABFFB0B29B8C21F004C9E01 /* HomeViewController.swift in Sources */,
 				0ABFFB0729B8C21F004C9E01 /* AppDelegate.swift in Sources */,
 				0ABFFB4029B8DA11004C9E01 /* BaseCollectionViewModel.swift in Sources */,

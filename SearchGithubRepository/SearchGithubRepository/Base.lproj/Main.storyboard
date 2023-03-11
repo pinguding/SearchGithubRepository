@@ -3,8 +3,6 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,33 +15,22 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="r3S-n0-gaO" kind="relationship" relationship="rootViewController" id="3j0-rW-0Li"/>
+                        <segue destination="We4-Qb-PyP" kind="relationship" relationship="rootViewController" id="2pg-zm-QWB"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pk4-TS-asF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-244" y="4"/>
         </scene>
-        <!--Home View Controller-->
-        <scene sceneID="IVN-nO-XBw">
+        <!--Storyboard Reference-->
+        <scene sceneID="1nc-ye-e4p">
             <objects>
-                <viewController id="r3S-n0-gaO" customClass="HomeViewController" customModule="SearchGithubRepository" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="2oY-uI-owq">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="KSC-7K-AGK"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="FOA-jI-lLF"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x3d-Jf-zSC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder id="We4-Qb-PyP" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="tk4-l8-srQ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xia-k4-6nQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="534" y="4"/>
+            <point key="canvasLocation" x="565" y="0.0"/>
         </scene>
     </scenes>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

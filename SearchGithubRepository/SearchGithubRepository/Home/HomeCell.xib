@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeCell" id="ukH-9l-Sns" customClass="HomeCell" customModule="SearchGithubRepository" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="355" height="85"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ZvA-Ym-HJK">
+                <rect key="frame" x="0.0" y="0.0" width="355" height="85"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RTq-5t-3Ey">
+                        <rect key="frame" x="0.0" y="0.0" width="355" height="85"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fbk-m1-yae">
+                                <rect key="frame" x="16" y="0.0" width="323" height="85"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Fbk-m1-yae" secondAttribute="trailing" constant="16" id="Izu-Ih-iMK"/>
+                            <constraint firstItem="Fbk-m1-yae" firstAttribute="leading" secondItem="RTq-5t-3Ey" secondAttribute="leading" constant="16" id="ZxG-NF-pCz"/>
+                            <constraint firstItem="Fbk-m1-yae" firstAttribute="top" secondItem="RTq-5t-3Ey" secondAttribute="top" id="bfl-To-RcM"/>
+                            <constraint firstAttribute="bottom" secondItem="Fbk-m1-yae" secondAttribute="bottom" id="jzG-EE-Mt1"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="RTq-5t-3Ey" firstAttribute="leading" secondItem="ZvA-Ym-HJK" secondAttribute="leading" id="7JZ-Yg-17e"/>
+                    <constraint firstItem="RTq-5t-3Ey" firstAttribute="top" secondItem="ZvA-Ym-HJK" secondAttribute="top" id="cbI-u6-Vfc"/>
+                    <constraint firstAttribute="bottom" secondItem="RTq-5t-3Ey" secondAttribute="bottom" id="gZS-Pn-aYz"/>
+                    <constraint firstAttribute="trailing" secondItem="RTq-5t-3Ey" secondAttribute="trailing" id="yIb-rH-dUH"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="355" height="85"/>
+            <connections>
+                <outlet property="titleLabel" destination="Fbk-m1-yae" id="Kkk-Gn-SdB"/>
+            </connections>
+            <point key="canvasLocation" x="148.85496183206106" y="10.91549295774648"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
