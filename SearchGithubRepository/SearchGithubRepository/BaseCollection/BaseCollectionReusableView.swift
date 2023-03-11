@@ -13,9 +13,11 @@ public protocol BaseCollectionReusableView: UICollectionReusableView {
     
     static var nib: UINib { get }
     
+    var indexPath: IndexPath? { get }
+    
     var controlEventDelegate: BaseCollectionUIControlEventDelegate? { get set }
     
-    func configure(item: BaseCollectionData)
+    func configure(item: BaseCollectionData, indexPath: IndexPath)
 }
 
 public extension BaseCollectionReusableView {

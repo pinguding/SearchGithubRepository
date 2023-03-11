@@ -6,3 +6,15 @@
 //
 
 import Foundation
+import Combine
+
+final class HomeViewModel: BaseCollectionViewModel {
+    
+    var collectionViewDataSource: [Int : [BaseCollectionData]] = [:]
+    
+    var updateDataSourcePublisher: PassthroughSubject<[Int : [BaseCollectionData]], Never> = .init()
+    
+    var headerData: [BaseCollectionData] = []
+    
+    
+}

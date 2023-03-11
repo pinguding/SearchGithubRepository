@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeHeaderView" id="52Y-Js-VFg" customClass="HomeHeaderView" customModule="SearchGithubRepository" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="478" height="158"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d6J-Ng-dbV">
+                    <rect key="frame" x="0.0" y="0.0" width="478" height="158"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OLb-TR-TCJ">
+                            <rect key="frame" x="16.000000000000004" y="108" width="51.333333333333343" height="30"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yFX-df-IRw">
+                            <rect key="frame" x="416" y="108" width="46" height="30"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="clearButtonAction:" destination="52Y-Js-VFg" eventType="touchUpInside" id="uXj-L4-lhX"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="OLb-TR-TCJ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="d6J-Ng-dbV" secondAttribute="top" id="7f8-Lo-vBk"/>
+                        <constraint firstAttribute="bottom" secondItem="OLb-TR-TCJ" secondAttribute="bottom" constant="20" id="O8C-7S-6Yk"/>
+                        <constraint firstItem="yFX-df-IRw" firstAttribute="centerY" secondItem="OLb-TR-TCJ" secondAttribute="centerY" id="X5b-LE-xCx"/>
+                        <constraint firstAttribute="bottom" secondItem="yFX-df-IRw" secondAttribute="bottom" constant="20" id="Yyv-7e-PwQ"/>
+                        <constraint firstItem="yFX-df-IRw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="OLb-TR-TCJ" secondAttribute="trailing" constant="20" id="cTa-yH-xNe"/>
+                        <constraint firstAttribute="trailing" secondItem="yFX-df-IRw" secondAttribute="trailing" constant="16" id="mol-er-yyP"/>
+                        <constraint firstItem="OLb-TR-TCJ" firstAttribute="leading" secondItem="d6J-Ng-dbV" secondAttribute="leading" constant="16" id="wjw-ii-nkG"/>
+                        <constraint firstItem="yFX-df-IRw" firstAttribute="top" relation="greaterThanOrEqual" secondItem="d6J-Ng-dbV" secondAttribute="top" id="xWP-WX-Xfb"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="jl7-hy-ckC"/>
+            <constraints>
+                <constraint firstItem="d6J-Ng-dbV" firstAttribute="top" secondItem="52Y-Js-VFg" secondAttribute="top" id="131-0d-xA9"/>
+                <constraint firstItem="jl7-hy-ckC" firstAttribute="trailing" secondItem="d6J-Ng-dbV" secondAttribute="trailing" id="4zd-6Y-epZ"/>
+                <constraint firstAttribute="bottom" secondItem="d6J-Ng-dbV" secondAttribute="bottom" id="E34-Ee-VtJ"/>
+                <constraint firstItem="d6J-Ng-dbV" firstAttribute="leading" secondItem="jl7-hy-ckC" secondAttribute="leading" id="ehM-I2-q1L"/>
+            </constraints>
+            <connections>
+                <outlet property="clearButton" destination="yFX-df-IRw" id="uJg-Fj-9ms"/>
+                <outlet property="titleLabel" destination="OLb-TR-TCJ" id="WqO-Ww-b3L"/>
+            </connections>
+            <point key="canvasLocation" x="111.45038167938931" y="56.338028169014088"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

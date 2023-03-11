@@ -10,15 +10,14 @@ import Combine
 
 open class BaseCollectionViewController: UIViewController {
     
-        
     @IBOutlet weak var collectionView: UICollectionView!
     
     open var cells: [Int: BaseCollectionViewCell.Type] {
         [:]
     }
     
-    open var numberOfSection: Int {
-        0
+    open var sectionId: [Int] {
+        []
     }
     
     open var header: [Int: BaseCollectionReusableView.Type] {
@@ -35,8 +34,8 @@ open class BaseCollectionViewController: UIViewController {
     
     private var cancellable: Set<AnyCancellable> = []
     
-    static public func build<ViewModel: BaseCollectionViewModel>(viewModel: ViewModel) -> BaseCollectionViewController {
-        let identifier = String(describing: Self.self)
+    class public func build<ViewModel: BaseCollectionViewModel>(viewModel: ViewModel) -> Self {
+        let identifier = String(describing: BaseCollectionViewController.self)
         let viewController = UIStoryboard(name: identifier, bundle: .main).instantiateViewController(withIdentifier: identifier) as! Self
         
         viewController.viewModel = viewModel
@@ -48,23 +47,23 @@ open class BaseCollectionViewController: UIViewController {
         super.viewDidLoad()
         
         cells.forEach {
-            collectionView.register($0.value.nib, forCellWithReuseIdentifier: $0.value.identifier)
+            collectionView?.register($0.value.nib, forCellWithReuseIdentifier: $0.value.identifier)
         }
         
         header.forEach {
-            collectionView.register($0.value.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: $0.value.identifier)
+            collectionView?.register($0.value.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: $0.value.identifier)
         }
         
         if showActivityIndicatorFooter {
-            collectionView.register(ActivityIndicatorFooterView.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: ActivityIndicatorFooterView.identifier)
+            collectionView?.register(ActivityIndicatorFooterView.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: ActivityIndicatorFooterView.identifier)
         }
         
-        collectionView.collectionViewLayout = UICollectionViewCompositionalLayout(sectionProvider: { sectionIndex, environment in
+        collectionView?.collectionViewLayout = UICollectionViewCompositionalLayout(sectionProvider: { sectionIndex, environment in
             let sectionLayout = self.collectionViewCompositionalSectionLayout(at: sectionIndex)
             
             var boundarySupplementaryItems = sectionLayout.boundarySupplementaryItems
             
-            if self.showActivityIndicatorFooter, sectionIndex == self.numberOfSection - 1 {
+            if self.showActivityIndicatorFooter, sectionIndex == self.sectionId.count - 1 {
                 let footerLayout = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50)), elementKind: UICollectionView.elementKindSectionFooter, alignment: .bottom)
                 boundarySupplementaryItems.append(footerLayout)
             }
@@ -89,7 +88,7 @@ open class BaseCollectionViewController: UIViewController {
                 guard let headerType = self.header[indexPath.section] else { return UICollectionReusableView() }
                 let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerType.identifier, for: indexPath) as! BaseCollectionReusableView
                 guard let item = self.viewModel?.headerData[indexPath.section] else { return UICollectionReusableView() }
-                headerView.configure(item: item)
+                headerView.configure(item: item, indexPath: indexPath)
                 headerView.controlEventDelegate = self
                 return headerView
             } else {
@@ -110,7 +109,7 @@ open class BaseCollectionViewController: UIViewController {
     }
     
     open func collectionView(_ dequeueReusableCell: BaseCollectionViewCell, itemIdentifier: BaseCollectionData, cellForRowAt indexPath: IndexPath) -> BaseCollectionViewCell {
-        dequeueReusableCell.configure(item: itemIdentifier)
+        dequeueReusableCell.configure(item: itemIdentifier, indexPath: indexPath)
         return dequeueReusableCell
     }
     
@@ -120,8 +119,11 @@ open class BaseCollectionViewController: UIViewController {
                 DispatchQueue.main.async {
                     guard let self = self else { return }
                     var snapShot = NSDiffableDataSourceSnapshot<Int, BaseCollectionData>()
-                    snapShot.appendSections([0])
-                    snapShot.appendItems(data)
+                    self.sectionId.forEach { id in
+                        guard let data = self.viewModel?.collectionViewDataSource[id] else { return }
+                        snapShot.appendSections([id])
+                        snapShot.appendItems(data, toSection: id)
+                    }
                     self.dataSource?.apply(snapShot)
                 }
             })

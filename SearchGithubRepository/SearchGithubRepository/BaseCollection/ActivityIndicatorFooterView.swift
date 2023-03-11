@@ -9,9 +9,13 @@ import UIKit
 
 final class ActivityIndicatorFooterView: UICollectionReusableView, BaseCollectionReusableView {
     
+    var indexPath: IndexPath?    
+    
     weak var controlEventDelegate: BaseCollectionUIControlEventDelegate? = nil
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    func configure(item: BaseCollectionData) { }
+    func configure(item: BaseCollectionData, indexPath: IndexPath) {
+        self.indexPath = indexPath
+    }
 }

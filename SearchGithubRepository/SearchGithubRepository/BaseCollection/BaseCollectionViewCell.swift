@@ -7,7 +7,4 @@
 
 import UIKit
 
-public protocol BaseCollectionViewCell: BaseCollectionReusableView, UICollectionViewCell {
-    
-    func configure(item: BaseCollectionData)
-}
+public protocol BaseCollectionViewCell: BaseCollectionReusableView, UICollectionViewCell { }

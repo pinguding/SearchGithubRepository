@@ -8,11 +8,11 @@
 import Foundation
 import Combine
 
-public protocol BaseCollectionViewModel: NSObject {
+public protocol BaseCollectionViewModel: AnyObject {
     
-    var collectionViewDataSource: [BaseCollectionData] { get }
+    var collectionViewDataSource: [Int: [BaseCollectionData]] { get }
     
-    var updateDataSourcePublisher: PassthroughSubject<[BaseCollectionData], Never> { get }
+    var updateDataSourcePublisher: PassthroughSubject<[Int: [BaseCollectionData]], Never> { get }
     
     var headerData: [BaseCollectionData] { get }
     

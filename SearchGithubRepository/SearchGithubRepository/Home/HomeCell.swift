@@ -13,14 +13,15 @@ final class HomeCell: UICollectionViewCell, BaseCollectionViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     
-    var indexPath: IndexPath = .init(row: .zero, section: .zero)
+    var indexPath: IndexPath? = nil
     
     override func prepareForReuse() {
         super.prepareForReuse()
         titleLabel.text = nil
     }
     
-    func configure(item: BaseCollectionData) {
+    func configure(item: BaseCollectionData, indexPath: IndexPath) {
         titleLabel.text = item.title
+        self.indexPath = indexPath
     }
 }
