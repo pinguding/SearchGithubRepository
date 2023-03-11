@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ActivityIndicatorFooterView" id="Qkj-GI-iWw" customClass="ActivityIndicatorFooterView" customModule="SearchGithubRepository" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="495" height="115"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="EwZ-xl-aif">
+                    <rect key="frame" x="229" y="39" width="37" height="37"/>
+                </activityIndicatorView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="0ux-LI-G14"/>
+            <constraints>
+                <constraint firstItem="EwZ-xl-aif" firstAttribute="centerX" secondItem="Qkj-GI-iWw" secondAttribute="centerX" id="9HC-qV-hvI"/>
+                <constraint firstItem="EwZ-xl-aif" firstAttribute="centerY" secondItem="Qkj-GI-iWw" secondAttribute="centerY" id="rUv-pE-hHp"/>
+            </constraints>
+            <connections>
+                <outlet property="activityIndicator" destination="EwZ-xl-aif" id="lyv-Zx-crP"/>
+            </connections>
+            <point key="canvasLocation" x="229.7709923664122" y="-2.4647887323943665"/>
+        </collectionReusableView>
+    </objects>
+</document>

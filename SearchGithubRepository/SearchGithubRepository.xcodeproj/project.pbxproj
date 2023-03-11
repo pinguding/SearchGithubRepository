@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A19139529BC660B00F522E8 /* ActivityIndicatorFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A19139429BC660B00F522E8 /* ActivityIndicatorFooterView.swift */; };
+		0A19139729BC661300F522E8 /* ActivityIndicatorFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A19139629BC661300F522E8 /* ActivityIndicatorFooterView.xib */; };
 		0ABFFB0729B8C21F004C9E01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABFFB0629B8C21F004C9E01 /* AppDelegate.swift */; };
 		0ABFFB0929B8C21F004C9E01 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABFFB0829B8C21F004C9E01 /* SceneDelegate.swift */; };
 		0ABFFB0B29B8C21F004C9E01 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABFFB0A29B8C21F004C9E01 /* HomeViewController.swift */; };
@@ -42,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A19139429BC660B00F522E8 /* ActivityIndicatorFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorFooterView.swift; sourceTree = "<group>"; };
+		0A19139629BC661300F522E8 /* ActivityIndicatorFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityIndicatorFooterView.xib; sourceTree = "<group>"; };
 		0ABFFB0329B8C21F004C9E01 /* SearchGithubRepository.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchGithubRepository.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ABFFB0629B8C21F004C9E01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0ABFFB0829B8C21F004C9E01 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -149,6 +153,8 @@
 				0ABFFB3F29B8DA11004C9E01 /* BaseCollectionViewModel.swift */,
 				0ABFFB3D29B8D85A004C9E01 /* BaseCollectionData.swift */,
 				0ABFFB3929B8D1AA004C9E01 /* BaseCollectionViewController.storyboard */,
+				0A19139429BC660B00F522E8 /* ActivityIndicatorFooterView.swift */,
+				0A19139629BC661300F522E8 /* ActivityIndicatorFooterView.xib */,
 			);
 			path = BaseCollection;
 			sourceTree = "<group>";
@@ -257,6 +263,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A19139729BC661300F522E8 /* ActivityIndicatorFooterView.xib in Resources */,
 				0ABFFB1329B8C221004C9E01 /* LaunchScreen.storyboard in Resources */,
 				0ABFFB3A29B8D1AA004C9E01 /* BaseCollectionViewController.storyboard in Resources */,
 				0ABFFB1029B8C221004C9E01 /* Assets.xcassets in Resources */,
@@ -287,6 +294,7 @@
 			files = (
 				0ABFFB4229B8DCBA004C9E01 /* BaseCollectionReusableView.swift in Sources */,
 				0ABFFB3C29B8D45A004C9E01 /* BaseCollectionViewCell.swift in Sources */,
+				0A19139529BC660B00F522E8 /* ActivityIndicatorFooterView.swift in Sources */,
 				0ABFFB0B29B8C21F004C9E01 /* HomeViewController.swift in Sources */,
 				0ABFFB0729B8C21F004C9E01 /* AppDelegate.swift in Sources */,
 				0ABFFB4029B8DA11004C9E01 /* BaseCollectionViewModel.swift in Sources */,

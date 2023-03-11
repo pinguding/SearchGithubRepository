@@ -28,6 +28,7 @@
                                 <cells/>
                                 <connections>
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="Cdw-uK-wNm"/>
+                                    <outlet property="prefetchDataSource" destination="Y6W-OH-hqX" id="wnp-wA-9CC"/>
                                 </connections>
                             </collectionView>
                         </subviews>

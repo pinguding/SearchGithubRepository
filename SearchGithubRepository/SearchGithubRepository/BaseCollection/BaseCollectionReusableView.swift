@@ -13,8 +13,6 @@ public protocol BaseCollectionReusableView: UICollectionReusableView {
     
     static var nib: UINib { get }
     
-    var item: BaseCollectionData { get set }
-    
     func configure(item: BaseCollectionData)
 }
 

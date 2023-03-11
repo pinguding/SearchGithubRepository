@@ -12,15 +12,19 @@ open class BaseCollectionViewController: UIViewController {
         
     @IBOutlet weak var collectionView: UICollectionView!
     
-    open var cells: [BaseCollectionViewCell] {
-        []
+    open var cells: [Int: BaseCollectionViewCell.Type] {
+        [:]
     }
     
-    open var header: BaseCollectionReusableView? {
-        nil
+    open var numberOfSection: Int {
+        0
     }
     
-    open var usingPagination: Bool {
+    open var header: [Int: BaseCollectionReusableView.Type] {
+        [:]
+    }
+    
+    open var useActivityIndicatorFooter: Bool {
         false
     }
     
@@ -43,16 +47,54 @@ open class BaseCollectionViewController: UIViewController {
         super.viewDidLoad()
         
         cells.forEach {
-            let cellType = type(of: $0)
-            collectionView.register(cellType.nib, forCellWithReuseIdentifier: cellType.identifier)
+            collectionView.register($0.value.nib, forCellWithReuseIdentifier: $0.value.identifier)
         }
         
-        if let header = header {
-            let headerType = type(of: header)
-            collectionView.register(headerType.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerType.identifier)
+        header.forEach {
+            collectionView.register($0.value.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: $0.value.identifier)
         }
+        
+        if useActivityIndicatorFooter {
+            collectionView.register(ActivityIndicatorFooterView.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: ActivityIndicatorFooterView.identifier)
+        }
+        
+        collectionView.collectionViewLayout = UICollectionViewCompositionalLayout(sectionProvider: { sectionIndex, environment in
+            let sectionLayout = self.collectionViewCompositionalSectionLayout(at: sectionIndex)
+            
+            var boundarySupplementaryItems = sectionLayout.boundarySupplementaryItems
+            
+            if self.useActivityIndicatorFooter, sectionIndex == self.numberOfSection - 1 {
+                let footerLayout = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50)), elementKind: UICollectionView.elementKindSectionFooter, alignment: .bottom)
+                boundarySupplementaryItems.append(footerLayout)
+            }
+            
+            sectionLayout.boundarySupplementaryItems = boundarySupplementaryItems
+            
+            return sectionLayout
+        })
+        
+        dataSource = UICollectionViewDiffableDataSource<Int, BaseCollectionData>(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+            guard let cellType = self.cells[indexPath.section],
+                  let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath) as? BaseCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+            
+            return self.collectionView(cell, itemIdentifier: itemIdentifier, cellForRowAt: indexPath)
+        })
         
         sinkWithViewModel()
+    }
+    
+    open func collectionViewCompositionalSectionLayout(at sectionIndex: Int) -> NSCollectionLayoutSection {
+        let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(50)))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: item.layoutSize, subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        return section
+    }
+    
+    open func collectionView(_ dequeueReusableCell: BaseCollectionViewCell, itemIdentifier: BaseCollectionData, cellForRowAt indexPath: IndexPath) -> BaseCollectionViewCell {
+        dequeueReusableCell.configure(item: itemIdentifier)
+        return dequeueReusableCell
     }
     
     open func sinkWithViewModel() {
@@ -68,4 +110,12 @@ open class BaseCollectionViewController: UIViewController {
             })
             .store(in: &cancellable)
     }
+}
+
+
+extension BaseCollectionViewController: UICollectionViewDelegate {
+    
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) { }
+    
+    public func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) { }
 }

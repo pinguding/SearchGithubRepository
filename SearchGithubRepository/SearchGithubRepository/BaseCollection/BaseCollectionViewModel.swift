@@ -12,7 +12,16 @@ public protocol BaseCollectionViewModel: NSObject {
     
     var collectionViewDataSource: [BaseCollectionData] { get }
     
-    var updateDataSourcePublisher: PassthroughSubject<Void, Never> { get }
+    var updateDataSourcePublisher: PassthroughSubject<[BaseCollectionData], Never> { get }
     
     var headerData: BaseCollectionData? { get }
+    
+    func applySnapshot()
+}
+
+public extension BaseCollectionViewModel {
+    
+    func applySnapshot() {
+        updateDataSourcePublisher.send(collectionViewDataSource)
+    }
 }
