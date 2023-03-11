@@ -9,6 +9,7 @@ import UIKit
 import Combine
 
 open class BaseCollectionViewController: UIViewController {
+    
         
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -78,12 +79,28 @@ open class BaseCollectionViewController: UIViewController {
                   let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath) as? BaseCollectionViewCell else {
                 return UICollectionViewCell()
             }
+            cell.controlEventDelegate = self
             
             return self.collectionView(cell, itemIdentifier: itemIdentifier, cellForRowAt: indexPath)
         })
         
+        dataSource?.supplementaryViewProvider = { collectionView, kind, indexPath in
+            if kind == UICollectionView.elementKindSectionHeader {
+                guard let headerType = self.header[indexPath.section] else { return UICollectionReusableView() }
+                let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerType.identifier, for: indexPath) as! BaseCollectionReusableView
+                guard let item = self.viewModel?.headerData[indexPath.section] else { return UICollectionReusableView() }
+                headerView.configure(item: item)
+                headerView.controlEventDelegate = self
+                return headerView
+            } else {
+                let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ActivityIndicatorFooterView.identifier, for: indexPath)
+                return footerView
+            }
+        }
+        
         sinkWithViewModel()
     }
+    
     
     open func collectionViewCompositionalSectionLayout(at sectionIndex: Int) -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(50)))
@@ -118,4 +135,11 @@ extension BaseCollectionViewController: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) { }
     
     public func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) { }
+}
+
+extension BaseCollectionViewController: BaseCollectionUIControlEventDelegate {
+    
+    public func handleComponentControlEvent(_ headerView: BaseCollectionReusableView, at indexPath: IndexPath, event: UIControl.Event) { }
+    
+    public func handleComponentControlEvent(_ cell: BaseCollectionViewCell, at indexPath: IndexPath, event: UIControl.Event) { }
 }

@@ -6,31 +6,18 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Root Naivgation Controller-->
         <scene sceneID="PaV-e1-aeZ">
             <objects>
-                <navigationController id="RWY-6e-lIe" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="RootNaivgationController" id="RWY-6e-lIe" customClass="RootNaivgationController" customModule="SearchGithubRepository" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CgQ-lB-Kzj">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <connections>
-                        <segue destination="We4-Qb-PyP" kind="relationship" relationship="rootViewController" id="2pg-zm-QWB"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pk4-TS-asF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-244" y="4"/>
-        </scene>
-        <!--Storyboard Reference-->
-        <scene sceneID="1nc-ye-e4p">
-            <objects>
-                <viewControllerPlaceholder id="We4-Qb-PyP" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="tk4-l8-srQ"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xia-k4-6nQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="565" y="0.0"/>
         </scene>
     </scenes>
 </document>

@@ -14,7 +14,7 @@ public protocol BaseCollectionViewModel: NSObject {
     
     var updateDataSourcePublisher: PassthroughSubject<[BaseCollectionData], Never> { get }
     
-    var headerData: BaseCollectionData? { get }
+    var headerData: [BaseCollectionData] { get }
     
     func applySnapshot()
     

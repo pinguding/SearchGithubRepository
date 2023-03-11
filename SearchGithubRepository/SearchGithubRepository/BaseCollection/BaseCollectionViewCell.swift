@@ -9,7 +9,5 @@ import UIKit
 
 public protocol BaseCollectionViewCell: BaseCollectionReusableView, UICollectionViewCell {
     
-    var indexPath: IndexPath { get }
-    
     func configure(item: BaseCollectionData)
 }

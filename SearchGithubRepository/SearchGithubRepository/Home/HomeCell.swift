@@ -9,6 +9,8 @@ import UIKit
 
 final class HomeCell: UICollectionViewCell, BaseCollectionViewCell {
     
+    weak var controlEventDelegate: BaseCollectionUIControlEventDelegate? = nil
+
     @IBOutlet weak var titleLabel: UILabel!
     
     var indexPath: IndexPath = .init(row: .zero, section: .zero)
