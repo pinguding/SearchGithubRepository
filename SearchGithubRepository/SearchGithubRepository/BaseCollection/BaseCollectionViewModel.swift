@@ -17,6 +17,8 @@ public protocol BaseCollectionViewModel: NSObject {
     var headerData: BaseCollectionData? { get }
     
     func applySnapshot()
+    
+    func requestNextPage()
 }
 
 public extension BaseCollectionViewModel {
@@ -24,4 +26,6 @@ public extension BaseCollectionViewModel {
     func applySnapshot() {
         updateDataSourcePublisher.send(collectionViewDataSource)
     }
+    
+    func requestNextPage() { }
 }
